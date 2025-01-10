@@ -38,14 +38,11 @@ button { width: 50px; height: 50px; margin: 5px }
   <button id="multiply">x</button>
 </div>
 <script>
-
     let numOne = ''; //숫자 1을 저장할 변수
     let operator = ''; //연산자를 저장할 변수
     let numTwo = ''; //숫자 2를 저장할 변수
-
     const $operator = document.querySelector('#operator');
     const $result = document.querySelector('#result');
-
     //함수 내부 코드가 대부분 비슷한데 특정 부분만 다를 땐 고차 함수로 중복 코드 제거//
     const onClickNumber = (number) => {
         return () => { //고차 함수 이용
@@ -56,8 +53,7 @@ button { width: 50px; height: 50px; margin: 5px }
             }
         $result.value += number;
         };
-    }
-
+    };
     document.querySelector('#num-0').addEventListener('click', onClickNumber('0'));
     document.querySelector('#num-1').addEventListener('click', onClickNumber('1'));
     document.querySelector('#num-2').addEventListener('click', onClickNumber('2'));
@@ -68,7 +64,6 @@ button { width: 50px; height: 50px; margin: 5px }
     document.querySelector('#num-7').addEventListener('click', onClickNumber('7'));
     document.querySelector('#num-8').addEventListener('click', onClickNumber('8'));
     document.querySelector('#num-9').addEventListener('click', onClickNumber('9'));
-
     const onClickOperator = (op) => {
         return () => { //고차 함수 이용
             if (numOne) {
@@ -79,13 +74,11 @@ button { width: 50px; height: 50px; margin: 5px }
             }
         };
     };
-
     document.querySelector('#plus').addEventListener('click', onClickOperator('+'));
     document.querySelector('#minus').addEventListener('click', onClickOperator('-'));
     document.querySelector('#divide').addEventListener('click', onClickOperator('/'));
     document.querySelector('#multiply').addEventListener('click', onClickOperator('*'));
     document.querySelector('#calculate').addEventListener('click', () => {});
     document.querySelector('#clear').addEventListener('click', () => {});
-
 </script>
 </body>
