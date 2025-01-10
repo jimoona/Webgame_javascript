@@ -38,5 +38,48 @@ button { width: 50px; height: 50px; margin: 5px }
   <button id="multiply">x</button>
 </div>
 <script>
+    let numOne = ''; //숫자 1을 저장할 변수
+    let operator = ''; //연산자를 저장할 변수
+    let numTwo = ''; //숫자 2를 저장할 변수
+
+    const $operator = document.querySelector('#operator');
+    const $result = document.querySelector('#result');
+
+    //숫자 버튼 클릭 -> operator 변수에 값이 저장되어 있느냐 아니냐에 따라 numOne과 numTwo 중 어느 변수에 저장할지 판단//
+    //지금은 문자열로 저장(이후 계산할 때 숫자로 바꾸기)//
+    document.querySelector('#num-0').addEventListener('click', () => {
+        if (operator) {
+            numTwo += '0';
+        } else {
+            numOne += '0';
+        }
+        $result.value += '0'; //클릭한 숫자를 화면에 표시
+    });
+
+    document.querySelector('#num-1').addEventListener('click', () => {
+        if (operator) {
+            numTwo += '1';
+        } else {
+            numOne += '1';
+        }
+        $result.value += '1'; //클릭한 숫자를 화면에 표시
+    });
+
+    document.querySelector('#num-2').addEventListener('click', () => {});
+    document.querySelector('#num-3').addEventListener('click', () => {});
+    document.querySelector('#num-4').addEventListener('click', () => {});
+    document.querySelector('#num-5').addEventListener('click', () => {});
+    document.querySelector('#num-6').addEventListener('click', () => {});
+    document.querySelector('#num-7').addEventListener('click', () => {});
+    document.querySelector('#num-8').addEventListener('click', () => {});
+    document.querySelector('#num-9').addEventListener('click', () => {});
+
+    document.querySelector('#plus').addEventListener('click', () => {});
+    document.querySelector('#minus').addEventListener('click', () => {});
+    document.querySelector('#divide').addEventListener('click', () => {});
+    document.querySelector('#multiply').addEventListener('click', () => {});
+    document.querySelector('#calculate').addEventListener('click', () => {});
+    document.querySelector('#clear').addEventListener('click', () => {});
+
 </script>
 </body>
