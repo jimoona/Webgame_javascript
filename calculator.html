@@ -43,37 +43,35 @@ button { width: 50px; height: 50px; margin: 5px }
     let numTwo = ''; //숫자 2를 저장할 변수
     const $operator = document.querySelector('#operator');
     const $result = document.querySelector('#result');
-    //함수 내부 코드가 대부분 비슷한데 특정 부분만 다를 땐 고차 함수로 중복 코드 제거//
-    const onClickNumber = (number) => {
-        return () => { //고차 함수 이용
-            if (operator) {
-            numTwo += number;
-            } else {
-            numOne += number;
+    const onClickNumber = (event) => {
+        if (operator) {
+        	if (!numTwo) {
+            	$result.value = '';
             }
-        $result.value += number;
-        };
+        numTwo += event.target.textContent;
+       } else {
+         numOne += event.target.textContent;
+       }
+        $result.value += event.target.textContent;
     };
-    document.querySelector('#num-0').addEventListener('click', onClickNumber('0'));
-    document.querySelector('#num-1').addEventListener('click', onClickNumber('1'));
-    document.querySelector('#num-2').addEventListener('click', onClickNumber('2'));
-    document.querySelector('#num-3').addEventListener('click', onClickNumber('3'));
-    document.querySelector('#num-4').addEventListener('click', onClickNumber('4'));
-    document.querySelector('#num-5').addEventListener('click', onClickNumber('5'));
-    document.querySelector('#num-6').addEventListener('click', onClickNumber('6'));
-    document.querySelector('#num-7').addEventListener('click', onClickNumber('7'));
-    document.querySelector('#num-8').addEventListener('click', onClickNumber('8'));
-    document.querySelector('#num-9').addEventListener('click', onClickNumber('9'));
-    const onClickOperator = (op) => {
-        return () => { //고차 함수 이용
-            if (numOne) {
-                operator = op;
-                $operator.value = op; //화면에 연산자 표시
-            } else {
+    document.querySelector('#num-0').addEventListener('click', onClickNumber);
+    document.querySelector('#num-1').addEventListener('click', onClickNumber);
+    document.querySelector('#num-2').addEventListener('click', onClickNumber);
+    document.querySelector('#num-3').addEventListener('click', onClickNumber);
+    document.querySelector('#num-4').addEventListener('click', onClickNumber);
+    document.querySelector('#num-5').addEventListener('click', onClickNumber);
+    document.querySelector('#num-6').addEventListener('click', onClickNumber);
+    document.querySelector('#num-7').addEventListener('click', onClickNumber);
+    document.querySelector('#num-8').addEventListener('click', onClickNumber);
+    document.querySelector('#num-9').addEventListener('click', onClickNumber);
+    const onClickOperator = (op) => () => {
+        if (numOne) {
+            operator = op;
+            $operator.value = op; //화면에 연산자 표시
+        } else {
             alert('숫자를 먼저 입력하세요.');
-            }
-        };
-    };
+        }
+    }; //고차 함수 사용해서 중복 제거
     document.querySelector('#plus').addEventListener('click', onClickOperator('+'));
     document.querySelector('#minus').addEventListener('click', onClickOperator('-'));
     document.querySelector('#divide').addEventListener('click', onClickOperator('/'));
