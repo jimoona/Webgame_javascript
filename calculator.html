@@ -100,6 +100,12 @@ button { width: 50px; height: 50px; margin: 5px }
         alert("숫자를 먼저 입력하세요.");
       }
     });
-    document.querySelector('#clear').addEventListener('click', () => {});
+    document.querySelector('#clear').addEventListener('click', () => {
+      numOne = '';
+      operator = '';
+      numTwo = '';
+      $operator.value = '';
+      $result.value = '';
+    });
 </script>
 </body>
