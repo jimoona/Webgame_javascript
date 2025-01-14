@@ -13,6 +13,17 @@
         const $input = document.querySelector('#input');
         const $form = document.querySelector('#form');
         const $logs = document.querySelector('#logs');
+        const numbers = [];
+        for (let n = 1; n <= 9; n += 1) {
+            numbers.push(n);
+        } //numbers 배열에 1부터 9까지의 숫자 담기
+        const answer = [];
+        for (let n = 0; n <= 3; n += 1) { //4번 반복(정답인 숫자 4개 뽑기)
+            const index = Math.floor(Math.random() * numbers.length); //인덱스 뽑기
+            answer.push(numbers[index]); //해당 인덱스에 담긴 숫자를 가져와 answer 배열에 추가(push)
+            numbers.splice(index, 1); //뽑은 숫자를 numbers 배열에서 제거(splice), 중복 방지
+        }
+        console.log(answer);
     </script>
 </body>
 </html>
