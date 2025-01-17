@@ -24,6 +24,25 @@
             numbers.splice(index, 1); //뽑은 숫자를 numbers 배열에서 제거(splice), 중복 방지
         }
         console.log(answer);
+        const tries = []; //입력한 값을 담을 배열 생성('1234'처럼 하나의 문자열로)
+        function checkInput(input) {
+            if (input.length != 4) { //길이가 4인지
+                return alert('4자리 숫자를 입력하세요.');
+            }
+            if (new Set(input).size !== 4) { //중복된 숫자가 있는지
+                return alert('중복된 숫자를 입력했습니다.');
+            }
+            if (tries.includes(input)) { //이미 시도한 값인지
+                return alert('이미 시도한 값입니다.');
+            }
+            return true;
+        } //입력한 값을 검사할 checkInput() 함수 만들기
+        $form.addEventListener('submit', (event) => { //#form 태그에 submit 이벤트 달기
+            event.preventDefault(); //#form 태그의 기본적인 동작 취소하기
+            const value = $input.value; //입력한 값을 $input.value로 가져와서 value 변수에 저장
+            $input.value = ''; //입력한 값은 문자열로 들어옴
+            const valid = checkInput(value); //checkInput() 함수를 호출 -> 입력한 값 검사, 결과 반환
+        });
     </script>
 </body>
 </html>
